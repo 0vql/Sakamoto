@@ -217,6 +217,7 @@ const Wrapper = styled.div`
   width: 80%;
   border: 1px solid #808080;
   border-radius: 0.5rem;
+  transform: translate(-50%, -50%);
 
   @media screen and (max-width: 600px) {
     width: 93%;
@@ -224,5 +225,3 @@ const Wrapper = styled.div`
 `;
 
 export default Search;
-
-//transform: translate(-50%, -50%); --- const Wrapper = styled.div
