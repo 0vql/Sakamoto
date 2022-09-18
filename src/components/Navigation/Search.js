@@ -112,6 +112,7 @@ const Content = styled.div`
   .main {
     background-color: #23272A;
     padding: 0.5rem;
+    color: #FFFFFF;
     padding-left: 1.2rem;
     padding-right: 0.8rem;
     border-radius: 0.4rem;
@@ -127,6 +128,7 @@ const Content = styled.div`
   input {
     outline: none;
     border: none;
+    color: #808080;
     padding: 1rem 2rem 1rem 0.5rem;
     font-size: 1.1rem;
     font-family: "Gilroy-Medium", sans-serif;
@@ -149,6 +151,7 @@ const Content = styled.div`
 
     div {
       background-color: #23272A;
+      color: #FFFFFF;
       padding: 0.3rem 1rem;
       border-radius: 0.3rem;
       width: 100%;
@@ -211,7 +214,6 @@ const Wrapper = styled.div`
   z-index: 10;
   top: 30%;
   left: 50%;
-  transform: translate(-50%, -50%);
   width: 80%;
   border: 1px solid #808080;
   border-radius: 0.5rem;
@@ -222,3 +224,5 @@ const Wrapper = styled.div`
 `;
 
 export default Search;
+
+//transform: translate(-50%, -50%); --- const Wrapper = styled.div
