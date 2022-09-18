@@ -152,7 +152,7 @@ function VideoPlayer({ sources, internalPlayer, setInternalPlayer, title }) {
       button.classList.add("skip-button");
       button.innerHTML = "Skip Intro";
       button.addEventListener("click", function () {
-        player.forward(85);
+        player.forward(80);
       });
       player.on("ready", () => {
         plyer = document.querySelector(".plyr__controls");

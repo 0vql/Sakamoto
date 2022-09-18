@@ -128,7 +128,6 @@ const Content = styled.div`
   input {
     outline: none;
     border: none;
-    color: #808080;
     padding: 1rem 2rem 1rem 0.5rem;
     font-size: 1.1rem;
     font-family: "Gilroy-Medium", sans-serif;
