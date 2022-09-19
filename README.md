@@ -13,7 +13,7 @@
 <a href="#"><img src="https://img.shields.io/badge/Crunchyroll-F47521?style=for-the-badge&logo=crunchyroll&logoColor=white"/></a>
 </p>
 
-> Sakamoto Light Theme is available at **[Release v1.2](https://github.com/ShivamKun/Sakamoto/releases/tag/v1.3)** and production website is available on **[sakamoto.live](https://sakamoto.live)**
+> Sakamoto Light Theme is available at **[Release v1.2](https://github.com/ShivamKun/Sakamoto/releases/tag/v1.2)** and production website is available on **[sakamoto.live](https://sakamoto.live)**
 
 ---
 ## **Introduction**
