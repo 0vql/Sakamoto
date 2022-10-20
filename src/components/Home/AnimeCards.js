@@ -84,6 +84,9 @@ function AnimeCards(props) {
   );
 }
 
+<button type="button" onclick="zoomin()">
+Zoom-In
+</button>
 const Wrapper = styled.div`
   img {
     width: 160px;
@@ -108,4 +111,6 @@ const Wrapper = styled.div`
   }
 `;
 
-export default AnimeCards;
+    
+    export default AnimeCards;
+  
