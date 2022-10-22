@@ -1,12 +1,24 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { IconContext } from "react-icons";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
+import { useEffect, useRef } from "react";
 
 function Nav() {
   const { width } = useWindowDimensions();
   const navigate = useNavigate();
+  const inputRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if(location.pathname.includes('search')) {
+      inputRef.current.value = location.pathname.split('/')[2]
+    } else {
+      inputRef.current.value = ''
+    }
+  }, [location])
+
 
   const keyPress = (e) => {
     if (e.keyCode === 13) {
@@ -35,6 +47,7 @@ function Nav() {
             placeholder="Search Anime"
             autoFocus
             onKeyDown={keyPress}
+            ref={inputRef}
           />
         </Search>
         <div className="nav-links">
