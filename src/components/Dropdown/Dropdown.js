@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import styled from "styled-components";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import React, { useEffect } from 'react';
+import { useState } from 'react';
+import styled from 'styled-components';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 function Dropdown({ setCurrentRange, options, selected }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(selected);
 
-  useEffect(()=>{
+  useEffect(() => {
     setSelectedOption(selected);
-  }, [selected])
+  }, [selected]);
 
   function changeHandler(option) {
     setIsOpen(!isOpen);
@@ -53,10 +53,10 @@ const DropdownButton = styled.button`
   text-align: center;
   white-space: nowrap;
   cursor: pointer;
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: #404040;
   padding: 0.8rem 2rem;
-  font-family: "Gilroy-Medium", sans-serif;
+  font-family: 'Gilroy-Medium', sans-serif;
   font-size: 0.9rem;
   border-radius: 0.4rem;
   transition: 0.2s;
@@ -68,7 +68,7 @@ const DropdownOptions = styled.ul`
   position: absolute;
   list-style-type: none;
   background-color: #404040;
-  color: #FFFFFF;
+  color: #ffffff;
   left: 0;
   /* top: 100%; */
   min-width: 100%;
@@ -85,7 +85,7 @@ const DropdownOption = styled.li`
   min-width: 100%;
   cursor: pointer;
   text-align: center;
-  background-color: ${({ active }) => (active ? "#585858" : "transparent")};
+  background-color: ${({ active }) => (active ? '#585858' : 'transparent')};
   padding: 0.4rem 0;
   transition: 0.2s;
   :hover {

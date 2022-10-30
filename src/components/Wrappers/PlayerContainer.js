@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const PlayerContainer = styled.div`
   display: flex;
@@ -9,9 +9,9 @@ const PlayerContainer = styled.div`
   border-radius: 0.5rem 0.5rem 0 0;
   margin-top: 1rem;
   border-bottom: none;
-  font-family: "Gilroy-Medium", sans-serif;
+  font-family: 'Gilroy-Medium', sans-serif;
   p {
-    color: #FFFFFF;
+    color: #ffffff;
   }
 
   button {
@@ -32,7 +32,7 @@ const PlayerContainer = styled.div`
     visibility: hidden;
     width: 120px;
     background-color: rgba(0, 0, 0, 0.8);
-    color: #FFFFFF;
+    color: #ffffff;
     text-align: center;
     border-radius: 6px;
     padding: 5px 5px;
@@ -46,7 +46,7 @@ const PlayerContainer = styled.div`
   }
 
   .tooltip .tooltiptext::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 100%;
     left: 50%;

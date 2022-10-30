@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const AnimeGrid = ({ title, animeDetails }) => {
   return (
@@ -13,7 +13,7 @@ const AnimeGrid = ({ title, animeDetails }) => {
           <Links
             key={i}
             to={
-              "/search/" +
+              '/search/' +
               (item.title.userPreferred !== null
                 ? item.title.userPreferred
                 : item.title.english)
@@ -88,9 +88,9 @@ const Links = styled(Link)`
   }
 
   p {
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 1rem;
-    font-family: "Gilroy-Medium", sans-serif;
+    font-family: 'Gilroy-Medium', sans-serif;
     text-decoration: none;
     max-width: 160px;
     @media screen and (max-width: 380px) {
@@ -102,11 +102,11 @@ const Links = styled(Link)`
 
 const Heading = styled.p`
   font-size: 1.8rem;
-  color: #FFFFFF;
-  font-family: "Gilroy-Light", sans-serif;
+  color: #ffffff;
+  font-family: 'Gilroy-Light', sans-serif;
   margin-bottom: 2rem;
   span {
-    font-family: "Gilroy-Bold", sans-serif;
+    font-family: 'Gilroy-Bold', sans-serif;
   }
 
   @media screen and (max-width: 600px) {

@@ -1,13 +1,13 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Scrollbar } from "swiper";
-import AnimeCardsSkeleton from "../../components/skeletons/AnimeCardsSkeleton";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Scrollbar } from 'swiper';
+import AnimeCardsSkeleton from '../../components/skeletons/AnimeCardsSkeleton';
 
-import "swiper/css";
-import "swiper/css/scrollbar";
+import 'swiper/css';
+import 'swiper/css/scrollbar';
 
 function AnimeCards(props) {
   const [data, setData] = useState([]);
@@ -33,23 +33,23 @@ function AnimeCards(props) {
             hide: false,
           }}
           breakpoints={{
-            "@0.00": {
+            '@0.00': {
               slidesPerView: 3,
               spaceBetween: 15,
             },
-            "@0.75": {
+            '@0.75': {
               slidesPerView: 4,
               spaceBetween: 20,
             },
-            "@1.00": {
+            '@1.00': {
               slidesPerView: 4,
               spaceBetween: 35,
             },
-            "@1.30": {
+            '@1.30': {
               slidesPerView: 5,
               spaceBetween: 35,
             },
-            "@1.50": {
+            '@1.50': {
               slidesPerView: 7,
               spaceBetween: 35,
             },
@@ -62,7 +62,7 @@ function AnimeCards(props) {
               <Wrapper>
                 <Link
                   to={
-                    "search/" +
+                    'search/' +
                     (item.title.userPreferred !== null
                       ? item.title.userPreferred
                       : item.title.english)
@@ -85,8 +85,8 @@ function AnimeCards(props) {
 }
 
 <button type="button" onclick="zoomin()">
-Zoom-In
-</button>
+  Zoom-In
+</button>;
 const Wrapper = styled.div`
   img {
     width: 160px;
@@ -105,12 +105,10 @@ const Wrapper = styled.div`
   }
 
   p {
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 1rem;
-    font-family: "Gilroy-Medium", sans-serif;
+    font-family: 'Gilroy-Medium', sans-serif;
   }
 `;
 
-    
-    export default AnimeCards;
-  
+export default AnimeCards;
