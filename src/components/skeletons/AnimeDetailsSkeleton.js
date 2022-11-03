@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import Skeleton from "react-loading-skeleton";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
+import React from 'react';
+import styled from 'styled-components';
+import Skeleton from 'react-loading-skeleton';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 function AnimeDetailsSkeleton() {
   const { width } = useWindowDimensions();
@@ -9,21 +9,21 @@ function AnimeDetailsSkeleton() {
   return (
     <Content>
       <Skeleton
-        height={width <= 600 ? "13rem" : "20rem"}
-        baseColor={"#808080"}
-        highlightColor={"#404040"}
+        height={width <= 600 ? '13rem' : '20rem'}
+        baseColor={'#808080'}
+        highlightColor={'#404040'}
         style={{
-          borderRadius: "0.7rem",
-          marginBottom: width <= 600 ? "1rem" : "2rem",
+          borderRadius: '0.7rem',
+          marginBottom: width <= 600 ? '1rem' : '2rem',
         }}
       />
       <ContentWrapper>
         <Skeleton
-          baseColor={"#808080"}
-          highlightColor={"#404040"}
+          baseColor={'#808080'}
+          highlightColor={'#404040'}
           count={7}
           style={{
-            marginBottom: "1rem",
+            marginBottom: '1rem',
           }}
         />
       </ContentWrapper>

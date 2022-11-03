@@ -1,7 +1,7 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import AnimeGrid from "../components/AnimeGrid/AnimeGrid";
-import SearchResultsSkeleton from "../components/skeletons/SearchResultsSkeleton";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import AnimeGrid from '../components/AnimeGrid/AnimeGrid';
+import SearchResultsSkeleton from '../components/skeletons/SearchResultsSkeleton';
 
 function FavouriteAnime() {
   const [animeDetails, setAnimeDetails] = useState([]);

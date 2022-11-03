@@ -1,9 +1,9 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
-import { IconContext } from "react-icons";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
-import { useEffect, useRef } from "react";
+import { IconContext } from 'react-icons';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
+import { useEffect, useRef } from 'react';
 
 function Nav() {
   const { width } = useWindowDimensions();
@@ -12,24 +12,23 @@ function Nav() {
   const location = useLocation();
 
   useEffect(() => {
-    if(location.pathname.includes('search')) {
-      inputRef.current.value = location.pathname.split('/')[2]
+    if (location.pathname.includes('search')) {
+      inputRef.current.value = location.pathname.split('/')[2];
     } else {
-      inputRef.current.value = ''
+      inputRef.current.value = '';
     }
-  }, [location])
-
+  }, [location]);
 
   const keyPress = (e) => {
     if (e.keyCode === 13) {
       let lowerCase = e.target.value.toLowerCase();
-      let titleLength = lowerCase.split(" ").join("").length;
+      let titleLength = lowerCase.split(' ').join('').length;
 
       console.log(`${titleLength}`);
 
-      if (titleLength > 0) navigate("/search/" + lowerCase);
-      else navigate("/");
-      e.target.value = "";
+      if (titleLength > 0) navigate('/search/' + lowerCase);
+      else navigate('/');
+      e.target.value = '';
     }
   };
 
@@ -59,11 +58,11 @@ function Nav() {
         {width <= 600 && (
           <IconContext.Provider
             value={{
-              size: "1.5rem",
+              size: '1.5rem',
               style: {
-                verticalAlign: "middle",
-                marginBottom: "0.2rem",
-                marginRight: "0.3rem",
+                verticalAlign: 'middle',
+                marginBottom: '0.2rem',
+                marginRight: '0.3rem',
               },
             }}
           ></IconContext.Provider>
@@ -71,11 +70,11 @@ function Nav() {
         {width > 600 && (
           <IconContext.Provider
             value={{
-              size: "16px",
+              size: '16px',
               style: {
-                verticalAlign: "middle",
-                marginBottom: "0.2rem",
-                marginRight: "0.3rem",
+                verticalAlign: 'middle',
+                marginBottom: '0.2rem',
+                marginRight: '0.3rem',
               },
             }}
           ></IconContext.Provider>
@@ -87,7 +86,7 @@ function Nav() {
 
 const Links = styled(Link)`
   color: #ffffff;
-  font-family: "Gilroy-Medium", sans-serif;
+  font-family: 'Gilroy-Medium', sans-serif;
   text-decoration: none;
   padding: 0rem 1.3rem 0.5rem 1.3rem;
 `;
@@ -146,7 +145,7 @@ const Search = styled.div`
     justify-content: center;
     align-items: center;
     ::placeholder {
-      color: #FFF;
+      color: #fff;
     }
   }
 `;

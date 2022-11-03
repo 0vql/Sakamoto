@@ -10,9 +10,13 @@ root.render(
   </React.StrictMode>
 );
 
-window.addEventListener('contextmenu', function (e) {
-  e.preventDefault();
-}, false);
+window.addEventListener(
+  'contextmenu',
+  function (e) {
+    e.preventDefault();
+  },
+  false
+);
 
 // register the service worker
 serviceWorkerRegistration.register();

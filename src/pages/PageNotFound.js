@@ -1,12 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 // import logo from "./public/assets/img/ghost.png";
-import styled from "styled-components";
+import styled from 'styled-components';
 
-function PageNotFound({changeMetaArr}) {
-  React.useEffect(()=>{
-    changeMetaArr("title", "PageNotFound")
-  })
+function PageNotFound({ changeMetaArr }) {
+  React.useEffect(() => {
+    changeMetaArr('title', 'PageNotFound');
+  });
   return (
     <NotFoundWrapper>
       <ErrorCTA>
@@ -58,8 +58,8 @@ const ErrorCTA = styled.div`
 `;
 
 const HomeLink = styled(Link)`
-  background-color: #FFFFFF;
-  color: #23272A;
+  background-color: #ffffff;
+  color: #23272a;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -118,7 +118,6 @@ const ErrorDetails = styled.div`
     }
   }
   @media screen and (max-width: 380px) {
-
   }
 `;
 
