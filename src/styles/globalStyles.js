@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle `
 	* {
 		margin: 0;
 		padding: 0;
@@ -82,7 +82,6 @@ const GlobalStyle = createGlobalStyle`
 		}
 	}
 
-
 	img {  
 		user-drag: none;  
 		user-select: none;
@@ -103,6 +102,10 @@ const GlobalStyle = createGlobalStyle`
 		cursor: pointer;
 		background-color: rgba(0, 0, 0, 0.6);
 		color: #FFFFFF;
+	}
+
+	.margin {
+		margin-bottom: 2rem;
 	}
 `;
 

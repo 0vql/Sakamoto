@@ -60,7 +60,7 @@ function Home({ changeMetaArr }) {
         {loading && <HomeSkeleton />}
         {!loading && <Carousel images={images} />}
         {localStorage.getItem('Animes') && checkSize() && (
-          <div>
+          <div className='margin'>
             <HeadingWrapper>
               <Heading>
                 <span>Continue</span> Watching
@@ -72,7 +72,7 @@ function Home({ changeMetaArr }) {
             />
           </div>
         )}
-        <div>
+        <div className='margin'>
           <HeadingWrapper>
             <Heading>
               <span>All Time</span> Popular
@@ -81,7 +81,7 @@ function Home({ changeMetaArr }) {
           </HeadingWrapper>
           <AnimeCards count={width <= 600 ? 7 : 15} criteria="popular" />
         </div>
-        <div>
+        <div className='margin'>
           <HeadingWrapper>
             <Heading>
               <span>Trending</span> Now
@@ -90,7 +90,7 @@ function Home({ changeMetaArr }) {
           </HeadingWrapper>
           <AnimeCards count={width <= 600 ? 7 : 15} criteria="trending" />
         </div>
-        <div>
+        <div className='margin'>
           <HeadingWrapper>
             <Heading>
               <span>Top 100</span> Anime
@@ -99,7 +99,7 @@ function Home({ changeMetaArr }) {
           </HeadingWrapper>
           <AnimeCards count={width <= 600 ? 7 : 15} criteria="top100" />
         </div>
-        <div>
+        <div className='margin'>
           <HeadingWrapper>
             <Heading>
               <span>All Time</span> Favourite
