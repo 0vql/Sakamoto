@@ -6,92 +6,103 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 import { useEffect, useRef } from 'react';
 
 function Nav() {
-  const { width } = useWindowDimensions();
-  const navigate = useNavigate();
-  const inputRef = useRef(null);
-  const location = useLocation();
+    const { width } = useWindowDimensions();
+    const navigate = useNavigate();
+    const inputRef = useRef(null);
+    const location = useLocation();
 
-  useEffect(() => {
-    if (location.pathname.includes('search')) {
-      inputRef.current.value = location.pathname.split('/')[2];
-    } else {
-      inputRef.current.value = '';
-    }
-  }, [location]);
+    useEffect(() => {
+        if (location.pathname.includes('search')) {
+            inputRef.current.value = location.pathname.split('/')[2];
+        } else {
+            inputRef.current.value = '';
+        }
+    }, [location]);
 
-  const keyPress = (e) => {
-    if (e.keyCode === 13) {
-      let lowerCase = e.target.value.toLowerCase();
-      let titleLength = lowerCase.split(' ').join('').length;
+    const keyPress = (e) => {
+        if (e.keyCode === 13) {
+            let lowerCase = e.target.value.toLowerCase();
+            let titleLength = lowerCase.split(' ').join('').length;
 
-      console.log(`${titleLength}`);
+            console.log(`${titleLength}`);
 
-      if (titleLength > 0) navigate('/search/' + lowerCase);
-      else navigate('/');
-      e.target.value = '';
-    }
-  };
+            if (titleLength > 0) navigate('/search/' + lowerCase);
+            else navigate('/');
+            e.target.value = '';
+        }
+    };
 
-  return (
-    <div>
-      <NavBar>
-        <Search>
-          <Link to="/">
-            <img src="./assets/logo.png" alt="Sakamoto" width="60" />
-          </Link>
-          <input
-            id="input"
-            type="text"
-            required
-            placeholder="Search Anime"
-            autoFocus
-            onKeyDown={keyPress}
-            ref={inputRef}
-          />
-        </Search>
-        <div className="nav-links">
-          <Links to="/popular">Popular</Links>
-          <Links to="/#">Forum</Links>
-          <Links to="/help">Help</Links>
-        </div>
+    return ( <
+        div >
+        <
+        NavBar >
+        <
+        Search >
+        <
+        Link to = "/" >
+        <
+        img src = "./assets/logo.png"
+        alt = "Sakamoto"
+        width = "60" / >
+        <
+        /Link> <
+        input id = "input"
+        type = "text"
+        required placeholder = "Search Anime"
+        autoFocus onKeyDown = { keyPress }
+        ref = { inputRef }
+        /> <
+        /Search> <
+        div className = "nav-links" >
+        <
+        Links to = "/popular" > Popular < /Links> <
+        Links to = "/#" > Forum < /Links> <
+        Links to = "/help" > Help < /Links> <
+        /div>
 
-        {width <= 600 && (
-          <IconContext.Provider
-            value={{
-              size: '1.5rem',
-              style: {
-                verticalAlign: 'middle',
-                marginBottom: '0.2rem',
-                marginRight: '0.3rem',
-              },
-            }}
-          ></IconContext.Provider>
-        )}
-        {width > 600 && (
-          <IconContext.Provider
-            value={{
-              size: '16px',
-              style: {
-                verticalAlign: 'middle',
-                marginBottom: '0.2rem',
-                marginRight: '0.3rem',
-              },
-            }}
-          ></IconContext.Provider>
-        )}
-      </NavBar>
-    </div>
-  );
+        {
+            width <= 600 && ( <
+                IconContext.Provider value = {
+                    {
+                        size: '1.5rem',
+                        style: {
+                            verticalAlign: 'middle',
+                            marginBottom: '0.2rem',
+                            marginRight: '0.3rem',
+                        },
+                    }
+                } >
+                < /IconContext.Provider>
+            )
+        } {
+            width > 600 && ( <
+                IconContext.Provider value = {
+                    {
+                        size: '16px',
+                        style: {
+                            verticalAlign: 'middle',
+                            marginBottom: '0.2rem',
+                            marginRight: '0.3rem',
+                        },
+                    }
+                } >
+                < /IconContext.Provider>
+            )
+        } <
+        /NavBar> <
+        /div>
+    );
 }
 
-const Links = styled(Link)`
+const Links = styled(Link)
+`
   color: #ffffff;
   font-family: 'Gilroy-Medium', sans-serif;
   text-decoration: none;
   padding: 0rem 1.3rem 0.5rem 1.3rem;
 `;
 
-const NavBar = styled.nav`
+const NavBar = styled.nav `
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -135,9 +146,10 @@ const NavBar = styled.nav`
   }
 `;
 
-const Search = styled.div`
+const Search = styled.div `
   input {
     border: none;
+    font-family: 'Gilroy-Medium', sans-serif;
     height: 30px;
     border-radius: 10px;
     padding: 10px 20px;
@@ -145,7 +157,7 @@ const Search = styled.div`
     justify-content: center;
     align-items: center;
     ::placeholder {
-      color: #fff;
+      color: #000000;
     }
   }
 `;
