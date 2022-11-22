@@ -1,10 +1,11 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import styled from "styled-components";
-import EpisodeLinksList from "../components/EpisodeLinks/EpisodeLinksList";
-import AnimeDetailsSkeleton from "../components/skeletons/AnimeDetailsSkeleton";
-import useWindowDimensions from "../hooks/useWindowDimensions";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import styled from 'styled-components';
+import EpisodeLinksList from '../components/EpisodeLinks/EpisodeLinksList';
+import AnimeDetailsSkeleton from '../components/skeletons/AnimeDetailsSkeleton';
+import useWindowDimensions from '../hooks/useWindowDimensions';
+import { Helmet } from 'react-helmet';
 
 function AnimeDetails() {
   let slug = useParams().slug;
@@ -13,6 +14,9 @@ function AnimeDetails() {
   const [expanded, setExpanded] = useState(false);
   const { width } = useWindowDimensions();
   const [localStorageDetails, setLocalStorageDetails] = useState(0);
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [banner, setBanner] = useState('');
 
   useEffect(() => {
     async function getAnimeDetails() {
@@ -25,6 +29,23 @@ function AnimeDetails() {
       setLoading(false);
       setAnimeDetails(res.data);
       getLocalStorage(res.data);
+      setContent((content) => {
+        content = res.data[0].gogoResponse.description.replace(
+          'Plot Summary:',
+          ''
+        );
+        let len = 200;
+        return (content =
+          content.length > len
+            ? content.substring(0, len - 3) + '...'
+            : content);
+      });
+      setBanner((banner) => {
+        return (banner = res.data[0].gogoResponse.image);
+      });
+      setTitle((title) => {
+        return (title = res.data[0].gogoResponse.title);
+      });
     }
     getAnimeDetails();
   }, [slug]);
@@ -34,8 +55,8 @@ function AnimeDetails() {
   }
 
   function getLocalStorage(animeDetails) {
-    if (localStorage.getItem("Animes")) {
-      let lsData = localStorage.getItem("Animes");
+    if (localStorage.getItem('Animes')) {
+      let lsData = localStorage.getItem('Animes');
       lsData = JSON.parse(lsData);
 
       let index = lsData.Names.findIndex(
@@ -50,6 +71,13 @@ function AnimeDetails() {
 
   return (
     <div>
+      <Helmet>
+        <title>{title}</title>
+        <meta property="description" content={content} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={content} />
+        <meta property="og:image" content={banner} />
+      </Helmet>
       {loading && <AnimeDetailsSkeleton />}
       {!loading && (
         <Content>
@@ -57,27 +85,21 @@ function AnimeDetails() {
             <div>
               <Banner
                 src={
-                  animeDetails[0].anilistResponse !== "NONE" &&
+                  animeDetails[0].anilistResponse !== 'NONE' &&
                   animeDetails[0].anilistResponse.anilistBannerImage !== null
                     ? animeDetails[0].anilistResponse.anilistBannerImage
-                    : "https://media.discordapp.net/attachments/1009328245533065288/1009740976711020575/Sakamoto_Public_Preview.png"
+                    : 'https://media.discordapp.net/attachments/1009328245533065288/1009740976711020575/Sakamoto_Public_Preview.png'
                 }
                 alt=""
               />
               <ContentWrapper>
                 <Poster>
                   <img src={animeDetails[0].gogoResponse.image} alt="" />
-                  {localStorageDetails === 0 && (
-                    <Button
-                      to={"/watch" + animeDetails[0].gogoResponse.episodes[0]}
-                    >
-                      Watch Now
-                    </Button>
-                  )}
-                  {localStorageDetails !== 0 && (
+                  {localStorageDetails !== 0 &&
+                  animeDetails[0].gogoResponse.numOfEpisodes > 1 ? (
                     <Button
                       to={
-                        "/watch" +
+                        '/watch' +
                         animeDetails[0].gogoResponse.episodes[
                           localStorageDetails - 1
                         ]
@@ -85,20 +107,26 @@ function AnimeDetails() {
                     >
                       EP - {localStorageDetails}
                     </Button>
+                  ) : (
+                    <Button
+                      to={'/watch' + animeDetails[0].gogoResponse.episodes[0]}
+                    >
+                      Watch Now
+                    </Button>
                   )}
                 </Poster>
                 <div>
                   <h1>{animeDetails[0].gogoResponse.title}</h1>
                   <p>
                     <span>Type: </span>
-                    {animeDetails[0].gogoResponse.type.replace("Type:", "")}
+                    {animeDetails[0].gogoResponse.type.replace('Type:', '')}
                   </p>
                   {width <= 600 && expanded && (
                     <p>
                       <span>Plot Summary: </span>
                       {animeDetails[0].gogoResponse.description.replace(
-                        "Plot Summary:",
-                        ""
+                        'Plot Summary:',
+                        ''
                       )}
                       <button onClick={() => readMoreHandler()}>
                         read less
@@ -109,8 +137,8 @@ function AnimeDetails() {
                     <p>
                       <span>Plot Summary: </span>
                       {animeDetails[0].gogoResponse.description
-                        .replace("Plot Summary:", "")
-                        .substring(0, 200) + "... "}
+                        .replace('Plot Summary:', '')
+                        .substring(0, 200) + '... '}
                       <button onClick={() => readMoreHandler()}>
                         read more
                       </button>
@@ -120,26 +148,26 @@ function AnimeDetails() {
                     <p>
                       <span>Plot Summary: </span>
                       {animeDetails[0].gogoResponse.description.replace(
-                        "Plot Summary:",
-                        ""
+                        'Plot Summary:',
+                        ''
                       )}
                     </p>
                   )}
 
                   <p>
                     <span>Genre: </span>
-                    {animeDetails[0].gogoResponse.genre.replace("Genre:", "")}
+                    {animeDetails[0].gogoResponse.genre.replace('Genre:', '')}
                   </p>
                   <p>
                     <span>Released: </span>
                     {animeDetails[0].gogoResponse.released.replace(
-                      "Released:",
-                      ""
+                      'Released:',
+                      ''
                     )}
                   </p>
                   <p>
                     <span>Status: </span>
-                    {animeDetails[0].gogoResponse.status.replace("Status:", "")}
+                    {animeDetails[0].gogoResponse.status.replace('Status:', '')}
                   </p>
                   <p>
                     <span>Number of Episodes: </span>
@@ -147,10 +175,13 @@ function AnimeDetails() {
                   </p>
                 </div>
               </ContentWrapper>
-              <EpisodeLinksList
-                episodeArray={animeDetails[0].gogoResponse.episodes}
-                episodeNum={parseInt(localStorageDetails)}
-              />
+              {animeDetails[0].gogoResponse.numOfEpisodes > 1 && (
+                <EpisodeLinksList
+                  episodeArray={animeDetails[0].gogoResponse.episodes}
+                  episodeNum={parseInt(localStorageDetails)}
+                  state={false}
+                />
+              )}
             </div>
           )}
         </Content>
@@ -180,18 +211,18 @@ const ContentWrapper = styled.div`
     margin: 1rem;
     font-size: 1rem;
     color: #808080;
-    font-family: "Gilroy-Regular", sans-serif;
+    font-family: 'Gilroy-Regular', sans-serif;
     span {
-      font-family: "Gilroy-Bold", sans-serif;
-      color: #FFFFFF;
+      font-family: 'Gilroy-Bold', sans-serif;
+      color: #ffffff;
     }
     p {
       text-align: justify;
     }
     h1 {
-      font-family: "Gilroy-Bold", sans-serif;
+      font-family: 'Gilroy-Bold', sans-serif;
       font-weight: normal;
-      color: #FFFFFF;
+      color: #ffffff;
     }
     button {
       display: none;
@@ -217,9 +248,9 @@ const ContentWrapper = styled.div`
         outline: none;
         background-color: transparent;
         text-decoration: underline;
-        font-family: "Gilroy-Bold", sans-serif;
+        font-family: 'Gilroy-Bold', sans-serif;
         font-size: 1rem;
-        color: #FFFFFF;
+        color: #ffffff;
       }
     }
   }
@@ -249,9 +280,9 @@ const Button = styled(Link)`
   padding: 1rem 3.4rem;
   text-align: center;
   text-decoration: none;
-  color: #23272A;
-  background-color: #FFFFFF;
-  font-family: "Gilroy-Bold", sans-serif;
+  color: #23272a;
+  background-color: #ffffff;
+  font-family: 'Gilroy-Bold', sans-serif;
   border-radius: 0.4rem;
   position: relative;
   top: -25%;

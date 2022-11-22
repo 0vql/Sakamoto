@@ -1,17 +1,17 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { Link } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
-import { BsFillPlayFill } from "react-icons/bs";
-import { IconContext } from "react-icons";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
+import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+import { BsFillPlayFill } from 'react-icons/bs';
+import { IconContext } from 'react-icons';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 function Carousel({ images }) {
   const { width } = useWindowDimensions();
@@ -51,10 +51,10 @@ function Carousel({ images }) {
                         <p>
                           {item.title.english !== null
                             ? item.title.english.length > 35
-                              ? item.title.english.substring(0, 35) + "..."
+                              ? item.title.english.substring(0, 35) + '...'
                               : item.title.english
                             : item.title.english.length > 35
-                            ? item.title.english.substring(0, 35) + "..."
+                            ? item.title.english.substring(0, 35) + '...'
                             : item.title.english}
                         </p>
                       )}
@@ -69,14 +69,14 @@ function Carousel({ images }) {
                       {width <= 600 && (
                         <IconContext.Provider
                           value={{
-                            size: "2rem",
+                            size: '2rem',
                             style: {
-                              verticalAlign: "middle",
-                              paddingLeft: "0.2rem",
+                              verticalAlign: 'middle',
+                              paddingLeft: '0.2rem',
                             },
                           }}
                         >
-                          <Button to={"search/" + item.title.english}>
+                          <Button to={'search/' + item.title.english}>
                             <BsFillPlayFill />
                           </Button>
                         </IconContext.Provider>
@@ -84,15 +84,15 @@ function Carousel({ images }) {
                       {width > 600 && (
                         <IconContext.Provider
                           value={{
-                            size: "18px",
+                            size: '18px',
                             style: {
-                              verticalAlign: "middle",
-                              marginBottom: "0.1rem",
-                              marginRight: "0.3rem",
+                              verticalAlign: 'middle',
+                              marginBottom: '0.1rem',
+                              marginRight: '0.3rem',
                             },
                           }}
                         >
-                          <Button to={"search/" + item.title.english}>
+                          <Button to={'search/' + item.title.english}>
                             <BsFillPlayFill />
                             Watch Now
                           </Button>
@@ -110,17 +110,17 @@ function Carousel({ images }) {
 }
 
 const bannerImgStyle = {
-  width: "100%",
-  height: "330px",
-  objectFit: "cover",
-  borderRadius: "0.7rem",
+  width: '100%',
+  height: '330px',
+  objectFit: 'cover',
+  borderRadius: '0.7rem',
 };
 
 const bannerImageStyleMobile = {
-  width: "100%",
-  height: "250px",
-  objectFit: "cover",
-  borderRadius: "0.5rem",
+  width: '100%',
+  height: '250px',
+  objectFit: 'cover',
+  borderRadius: '0.5rem',
 };
 
 const Container = styled.div`
@@ -158,11 +158,11 @@ const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 6rem 2.3rem 0 2.3rem;
 
   p {
-    font-family: "Gilroy-Bold", sans-serif;
+    font-family: 'Gilroy-Bold', sans-serif;
     font-size: 1.6rem;
   }
   @media screen and (max-width: 600px) {
@@ -177,20 +177,20 @@ const Content = styled.div`
 
 const Button = styled(Link)`
   color: #202020;
-  font-family: "Gilroy-Bold", sans-serif;
+  font-family: 'Gilroy-Bold', sans-serif;
   text-decoration: none;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   outline: none;
   border: none;
   padding: 0.75rem 1.3rem 0.75rem 1.3rem;
   border-radius: 0.4rem;
   cursor: pointer;
   font-size: 0.9rem;
-  
+
   .Button:hover {
-    background-color:#808080;
+    background-color: #808080;
     transition: 0.7s;
-}
+  }
 
   @media screen and (max-width: 600px) {
     border-radius: 50%;

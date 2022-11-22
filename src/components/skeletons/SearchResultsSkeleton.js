@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import Skeleton from "react-loading-skeleton";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
+import React from 'react';
+import styled from 'styled-components';
+import Skeleton from 'react-loading-skeleton';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 function SearchResultsSkeleton({ name }) {
   const { width } = useWindowDimensions();
@@ -9,25 +9,25 @@ function SearchResultsSkeleton({ name }) {
   return (
     <Parent>
       <Heading>
-        <span>{name === undefined ? "Search" : name}</span> Results
+        <span>{name === undefined ? 'Search' : name}</span> Results
       </Heading>
       <CardWrapper>
         {[...Array(40)].map((x, i) => (
           <div key={i}>
             <Skeleton
-              width={width <= 600 ? "110px" : "160px"}
-              height={width <= 600 ? "170px" : "235px"}
-              borderRadius={width <= 600 ? "0.3rem" : "0.5rem"}
-              baseColor={"#808080"}
-              highlightColor={"#404040"}
+              width={width <= 600 ? '110px' : '160px'}
+              height={width <= 600 ? '170px' : '235px'}
+              borderRadius={width <= 600 ? '0.3rem' : '0.5rem'}
+              baseColor={'#808080'}
+              highlightColor={'#404040'}
             />
             <Skeleton
-              width={width <= 600 ? "110px" : "160px"}
-              baseColor={"#808080"}
-              highlightColor={"#404040"}
+              width={width <= 600 ? '110px' : '160px'}
+              baseColor={'#808080'}
+              highlightColor={'#404040'}
               count={2}
               style={{
-                marginTop: width <= 600 ? "0.5rem" : "1rem",
+                marginTop: width <= 600 ? '0.5rem' : '1rem',
               }}
             />
           </div>
@@ -39,11 +39,11 @@ function SearchResultsSkeleton({ name }) {
 
 const Heading = styled.p`
   font-size: 1.8rem;
-  color: #FFFFFF;
-  font-family: "Gilroy-Light", sans-serif;
+  color: #ffffff;
+  font-family: 'Gilroy-Light', sans-serif;
   margin-bottom: 2rem;
   span {
-    font-family: "Gilroy-Bold", sans-serif;
+    font-family: 'Gilroy-Bold', sans-serif;
   }
 
   @media screen and (max-width: 600px) {

@@ -1,15 +1,15 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 function ServersList({ episodeLinks, currentServer, setCurrentServer }) {
   const listOfServers = [
-    "vidstreaming",
-    "streamsb",
-    "gogoserver",
-    "xstreamcdn",
-    "mixdrop",
-    "mp4upload",
-    "doodstream",
+    'vidstreaming',
+    'streamsb',
+    'gogoserver',
+    'xstreamcdn',
+    'mixdrop',
+    'mp4upload',
+    'doodstream',
   ];
   return (
     <div>
@@ -17,7 +17,7 @@ function ServersList({ episodeLinks, currentServer, setCurrentServer }) {
         <div className="server-wrapper">
           <p>Servers List</p>
           <div className="serverlinks">
-            {listOfServers.map((server,index) => {
+            {listOfServers.map((server, index) => {
               return (
                 episodeLinks[0][server] !== undefined && (
                   <button
@@ -28,8 +28,8 @@ function ServersList({ episodeLinks, currentServer, setCurrentServer }) {
                     style={
                       currentServer === episodeLinks[0][server]
                         ? {
-                            backgroundColor: "#FFFFFF",
-                            color: "#23272A",
+                            backgroundColor: '#FFFFFF',
+                            color: '#23272A',
                           }
                         : {}
                     }
@@ -48,15 +48,15 @@ function ServersList({ episodeLinks, currentServer, setCurrentServer }) {
 
 const ServerWrapper = styled.div`
   p {
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 1.4rem;
-    font-family: "Gilroy-Medium", sans-serif;
+    font-family: 'Gilroy-Medium', sans-serif;
     text-decoration: underline;
   }
 
   .server-wrapper {
     padding: 1rem;
-    background-color: #23272A;
+    background-color: #23272a;
     border: 1px solid #808080;
     border-radius: 0.4rem;
     box-shadow: 0px 4.41109px 20.291px rgba(16, 16, 24, 0.81);
@@ -74,12 +74,12 @@ const ServerWrapper = styled.div`
   button {
     cursor: pointer;
     outline: none;
-    color: #FFFFFF;
+    color: #ffffff;
     background-color: #808080;
     border: 1px solid #404040;
     padding: 0.7rem 1.5rem;
     border-radius: 0.4rem;
-    font-family: "Gilroy-Medium", sans-serif;
+    font-family: 'Gilroy-Medium', sans-serif;
     font-size: 0.9rem;
     text-transform: uppercase;
   }

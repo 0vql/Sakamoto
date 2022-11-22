@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
-import Dropdown from "../Dropdown/Dropdown";
+import { useEffect } from 'react';
+import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
+import Dropdown from '../Dropdown/Dropdown';
 
 const EpisodeLinksList = ({ episodeArray, episodeNum }) => {
   const { width } = useWindowDimensions();
@@ -33,7 +33,7 @@ const EpisodeLinksList = ({ episodeArray, episodeNum }) => {
         buffer[key] = rangeValues;
       }
       setRangeFilters(buffer);
-      if(episodeNum === 0){
+      if (episodeNum === 0) {
         setCurrentRange(Object.keys(buffer)[0]);
         return;
       }
@@ -57,12 +57,12 @@ const EpisodeLinksList = ({ episodeArray, episodeNum }) => {
         {rangeFilters[currentRange]?.map((item, i) => (
           <EpisodeLink
             key={i}
-            to={"/watch" + item}
+            to={'/watch' + item}
             style={
               episodeNum === currentRangeIndex * 100 + i + 1
-                ? { backgroundColor: "#FFFFFF", color: "#23272A" }
+                ? { backgroundColor: '#FFFFFF', color: '#23272A' }
                 : episodeNum > currentRangeIndex * 100 + i
-                ? { backgroundColor: "#AFAFAF", color: "#23272A" }
+                ? { backgroundColor: '#AFAFAF', color: '#23272A' }
                 : {}
             }
           >
@@ -95,7 +95,7 @@ const EpisodesWrapper = styled.div`
     font-size: 1.3rem;
     text-decoration: underline;
     color: white;
-    font-family: "Gilroy-Medium", sans-serif;
+    font-family: 'Gilroy-Medium', sans-serif;
   }
   box-shadow: 0px 4.41109px 20.291px rgba(16, 16, 24, 0.81);
 `;
@@ -117,13 +117,13 @@ const Episodes = styled.div`
 
 const EpisodeLink = styled(Link)`
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
   text-decoration: none;
   background-color: #404040;
   padding: 0.9rem 0rem;
-  font-family: "Gilroy-Medium", sans-serif;
+  font-family: 'Gilroy-Medium', sans-serif;
   border-radius: 0.4rem;
-  border: 1px solid #23272A;
+  border: 1px solid #23272a;
   transition: 0.2s;
 
   :hover {

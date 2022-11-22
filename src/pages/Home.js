@@ -1,22 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import Carousel from "../components/Home/Carousel";
-import axios from "axios";
-import AnimeCards from "../components/Home/AnimeCards";
-import HomeSkeleton from "../components/skeletons/CarouselSkeleton";
-import useWindowDimensions from "../hooks/useWindowDimensions";
-import WatchingEpisodes from "../components/Home/WatchingEpisodes";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import Carousel from '../components/Home/Carousel';
+import axios from 'axios';
+import { Helmet } from 'react-helmet';
+import AnimeCards from '../components/Home/AnimeCards';
+import HomeSkeleton from '../components/skeletons/CarouselSkeleton';
+import useWindowDimensions from '../hooks/useWindowDimensions';
+import WatchingEpisodes from '../components/Home/WatchingEpisodes';
 
-function Home({changeMetaArr}) {
+function Home({ changeMetaArr }) {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [confirmRemove, setConfirmRemove] = useState([]);
   const { width } = useWindowDimensions();
-  React.useEffect(()=>{
-    changeMetaArr("title", "Sakamoto - Watch Popular Anime Online")
-    // console.log("Hlo")
-  })
+  const title = 'Sakamoto - Watch Popular Anime Online';
+  const content = `Sakamoto. An ad-free anime streaming site. Catch your favourite shows and movies right here! 
+            Help us by contributing to the project on github.`;
+  const image =
+    'https://media.discordapp.net/attachments/1009328245533065288/1009328327909199904/8.png';
+  // React.useEffect(()=>{
+  //   changeMetaArr("title", title)
+  //   // console.log("Hlo")
+  // })
   useEffect(() => {
     getImages();
   }, []);
@@ -31,7 +37,7 @@ function Home({changeMetaArr}) {
   }
 
   function checkSize() {
-    let lsData = localStorage.getItem("Animes");
+    let lsData = localStorage.getItem('Animes');
     lsData = JSON.parse(lsData);
     if (lsData.Names.length === 0) {
       return false;
@@ -40,23 +46,33 @@ function Home({changeMetaArr}) {
   }
   return (
     <div>
+      <Helmet>
+        <title>{title}</title>
+        <meta property="description" content={content} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={content} />
+        <meta property="og:image" content={image} />
+      </Helmet>
       <HomeDiv>
         <HomeHeading>
           <span>Recommended</span> to you
         </HomeHeading>
         {loading && <HomeSkeleton />}
         {!loading && <Carousel images={images} />}
-        {localStorage.getItem("Animes") && checkSize() && (
-          <div>
+        {localStorage.getItem('Animes') && checkSize() && (
+          <div className='margin'>
             <HeadingWrapper>
               <Heading>
                 <span>Continue</span> Watching
               </Heading>
             </HeadingWrapper>
-            <WatchingEpisodes confirmRemove={confirmRemove} setConfirmRemove={setConfirmRemove} />
+            <WatchingEpisodes
+              confirmRemove={confirmRemove}
+              setConfirmRemove={setConfirmRemove}
+            />
           </div>
         )}
-        <div>
+        <div className='margin'>
           <HeadingWrapper>
             <Heading>
               <span>All Time</span> Popular
@@ -65,7 +81,7 @@ function Home({changeMetaArr}) {
           </HeadingWrapper>
           <AnimeCards count={width <= 600 ? 7 : 15} criteria="popular" />
         </div>
-        <div>
+        <div className='margin'>
           <HeadingWrapper>
             <Heading>
               <span>Trending</span> Now
@@ -74,7 +90,7 @@ function Home({changeMetaArr}) {
           </HeadingWrapper>
           <AnimeCards count={width <= 600 ? 7 : 15} criteria="trending" />
         </div>
-        <div>
+        <div className='margin'>
           <HeadingWrapper>
             <Heading>
               <span>Top 100</span> Anime
@@ -83,7 +99,7 @@ function Home({changeMetaArr}) {
           </HeadingWrapper>
           <AnimeCards count={width <= 600 ? 7 : 15} criteria="top100" />
         </div>
-        <div>
+        <div className='margin'>
           <HeadingWrapper>
             <Heading>
               <span>All Time</span> Favourite
@@ -98,13 +114,13 @@ function Home({changeMetaArr}) {
 }
 
 const Links = styled(Link)`
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 1.1rem;
-  font-family: "Gilroy-Medium", sans-serif;
+  font-family: 'Gilroy-Medium', sans-serif;
   @media screen and (max-width: 600px) {
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 1rem;
-    font-family: "Gilroy-Medium", sans-serif;
+    font-family: 'Gilroy-Medium', sans-serif;
   }
 `;
 
@@ -117,11 +133,11 @@ const HomeDiv = styled.div`
 
 const HomeHeading = styled.p`
   font-size: 2.3rem;
-  color: #FFFFFF;
-  font-family: "Gilroy-Light", sans-serif;
+  color: #ffffff;
+  font-family: 'Gilroy-Light', sans-serif;
 
   span {
-    font-family: "Gilroy-Bold", sans-serif;
+    font-family: 'Gilroy-Bold', sans-serif;
   }
   margin-bottom: 1rem;
 
@@ -132,11 +148,11 @@ const HomeHeading = styled.p`
 
 const Heading = styled.p`
   font-size: 1.8rem;
-  color: #FFFFFF;
-  font-family: "Gilroy-Light", sans-serif;
+  color: #ffffff;
+  font-family: 'Gilroy-Light', sans-serif;
 
   span {
-    font-family: "Gilroy-Bold", sans-serif;
+    font-family: 'Gilroy-Bold', sans-serif;
   }
 
   @media screen and (max-width: 600px) {

@@ -1,24 +1,29 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import styled from "styled-components";
-import SearchResultsSkeleton from "../components/skeletons/SearchResultsSkeleton";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import styled from 'styled-components';
+import SearchResultsSkeleton from '../components/skeletons/SearchResultsSkeleton';
+import { Helmet } from 'react-helmet';
 
 const DefaultFilter = {
-  subs:true,
-  dubs:true
+  subs: true,
+  dubs: true,
 };
 
-
-function SearchResults({changeMetaArr}) {
+function SearchResults({ changeMetaArr }) {
   let urlParams = useParams().name;
-  urlParams = urlParams.replace(":", "").replace("(", "").replace(")", "");
+  urlParams = urlParams.replace(':', '').replace('(', '').replace(')', '');
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState(DefaultFilter);
-  React.useEffect(()=>{
-    changeMetaArr("title", `Search results for: ${urlParams}`)
-  })
+  const title = `Search results for: ${urlParams}`;
+  const content = 'Sakamoto - Watch Popular Anime Online';
+  const image =
+    'https://media.discordapp.net/attachments/1009328245533065288/1009328327909199904/8.png';
+
+  // React.useEffect(()=>{
+  //   changeMetaArr("title", `Search results for: ${urlParams}`)
+  // })
   useEffect(() => {
     async function getResults() {
       setLoading(true);
@@ -33,15 +38,15 @@ function SearchResults({changeMetaArr}) {
   }, [urlParams]);
 
   const updateSearchFilter = (ev) => {
-    const otherKey = Object.keys(filter).filter(k => k !== ev.target.value);
+    const otherKey = Object.keys(filter).filter((k) => k !== ev.target.value);
     let otherChecked = filter[otherKey];
     // check if unchecking both - in this case we'll toggle instead
     if (!ev.target.checked && !otherChecked) {
       otherChecked = true;
     }
     setFilter({
-      [ev.target.value]:ev.target.checked,
-      [otherKey]:otherChecked
+      [ev.target.value]: ev.target.checked,
+      [otherKey]: otherChecked,
     });
   };
 
@@ -49,21 +54,41 @@ function SearchResults({changeMetaArr}) {
     if (filter.dubs && filter.subs) return true;
     let match = item.title.toLowerCase().endsWith('(dub)');
     return filter.dubs ? match : !match;
-  }
+  };
 
   return (
     <>
-      {loading ? <SearchResultsSkeleton /> :
-      (
+      <Helmet>
+        <title>{title}</title>
+        <meta property="description" content={content} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={content} />
+        <meta property="og:image" content={image} />
+      </Helmet>
+      {loading ? (
+        <SearchResultsSkeleton />
+      ) : (
         <Parent>
           <Heading>
             <span>Search</span> Results
           </Heading>
           <CheckboxWrapper>
             <label htmlFor="dubs">Dubs</label>
-            <input id="dubs" checked={filter.dubs} onChange={updateSearchFilter} type="checkbox" value="dubs" />
+            <input
+              id="dubs"
+              checked={filter.dubs}
+              onChange={updateSearchFilter}
+              type="checkbox"
+              value="dubs"
+            />
             <label htmlFor="subs">Subs</label>
-            <input id="subs" checked={filter.subs} onChange={updateSearchFilter} type="checkbox" value="subs" />
+            <input
+              id="subs"
+              checked={filter.subs}
+              onChange={updateSearchFilter}
+              type="checkbox"
+              value="subs"
+            />
           </CheckboxWrapper>
           <CardWrapper>
             {results.filter(filterResults).map((item, i) => (
@@ -83,7 +108,7 @@ function SearchResults({changeMetaArr}) {
 const Parent = styled.div`
   margin: 2rem 5rem 2rem 5rem;
   h2 {
-    color: #FFFFFF;
+    color: #ffffff;
   }
   @media screen and (max-width: 600px) {
     margin: 1rem;
@@ -91,7 +116,7 @@ const Parent = styled.div`
 `;
 
 const CheckboxWrapper = styled.div`
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 0.5rem 0;
   margin-bottom: 2rem;
   label {
@@ -100,7 +125,7 @@ const CheckboxWrapper = styled.div`
   label:not(:first-child) {
     margin-left: 2rem;
   }
-`
+`;
 
 const CardWrapper = styled.div`
   /* display: flex;
@@ -162,9 +187,9 @@ const Wrapper = styled(Link)`
   }
 
   p {
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 1rem;
-    font-family: "Gilroy-Medium", sans-serif;
+    font-family: 'Gilroy-Medium', sans-serif;
     text-decoration: none;
     max-width: 160px;
     @media screen and (max-width: 380px) {
@@ -176,10 +201,10 @@ const Wrapper = styled(Link)`
 
 const Heading = styled.p`
   font-size: 1.8rem;
-  color: #FFFFFF;
-  font-family: "Gilroy-Light", sans-serif;
+  color: #ffffff;
+  font-family: 'Gilroy-Light', sans-serif;
   span {
-    font-family: "Gilroy-Bold", sans-serif;
+    font-family: 'Gilroy-Bold', sans-serif;
   }
 
   @media screen and (max-width: 600px) {

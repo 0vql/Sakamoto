@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import Skeleton from "react-loading-skeleton";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
+import React from 'react';
+import styled from 'styled-components';
+import Skeleton from 'react-loading-skeleton';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 function WatchAnimeSkeleton() {
   const { width } = useWindowDimensions();
@@ -11,26 +11,26 @@ function WatchAnimeSkeleton() {
       <Wrapper>
         <Skeleton
           height={40}
-          baseColor={"#808080"}
-          highlightColor={"#404040"}
+          baseColor={'#808080'}
+          highlightColor={'#404040'}
           style={{
-            marginBottom: "1rem",
+            marginBottom: '1rem',
           }}
         />
         <Skeleton
-          baseColor={"#808080"}
-          highlightColor={"#404040"}
+          baseColor={'#808080'}
+          highlightColor={'#404040'}
           style={{
-            marginBottom: "1rem",
-            aspectRatio: width <= 600 ? "16 / 11" : "16 / 9",
+            marginBottom: '1rem',
+            aspectRatio: width <= 600 ? '16 / 11' : '16 / 9',
           }}
         />
         <Skeleton
           height={40}
-          baseColor={"#808080"}
-          highlightColor={"#404040"}
+          baseColor={'#808080'}
+          highlightColor={'#404040'}
           style={{
-            marginBottom: "1rem",
+            marginBottom: '1rem',
           }}
         />
         <EpisodesWrapper>
@@ -39,10 +39,10 @@ function WatchAnimeSkeleton() {
             <Skeleton
               height={40}
               width={150}
-              baseColor={"#808080"}
-              highlightColor={"#404040"}
+              baseColor={'#808080'}
+              highlightColor={'#404040'}
               style={{
-                borderRadius: "0.4rem",
+                borderRadius: '0.4rem',
               }}
             />
           </div>
@@ -50,11 +50,11 @@ function WatchAnimeSkeleton() {
             {[...Array(20)].map((x, i) => (
               <div key={i}>
                 <Skeleton
-                  width={width <= 600 ? "5rem" : "10rem"}
+                  width={width <= 600 ? '5rem' : '10rem'}
                   height={width <= 600 ? 55 : 40}
-                  borderRadius={"0.5rem"}
-                  baseColor={"#808080"}
-                  highlightColor={"#404040"}
+                  borderRadius={'0.5rem'}
+                  baseColor={'#808080'}
+                  highlightColor={'#404040'}
                 />
               </div>
             ))}
@@ -97,8 +97,8 @@ const EpisodesWrapper = styled.div`
   p {
     font-size: 1.3rem;
     text-decoration: underline;
-    color: #FFFFFF;
-    font-family: "Gilroy-Medium", sans-serif;
+    color: #ffffff;
+    font-family: 'Gilroy-Medium', sans-serif;
   }
   box-shadow: 0px 4.41109px 20.291px rgba(16, 16, 24, 0.81);
 `;

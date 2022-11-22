@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle `
 	* {
 		margin: 0;
 		padding: 0;
@@ -13,6 +13,8 @@ const GlobalStyle = createGlobalStyle`
 			-webkit-user-select: none; /* Safari 3.1+ */
 			-moz-user-select: none; /* Firefox 2+ */
 			-ms-user-select: none; /* IE 10+ */
+                        -webkit-tap-highlight-color: rgba(0,0,0,0);
+                        -webkit-tap-highlight-color: transparent;
 	}
 	body > #root {
 		min-height: 100vh;
@@ -80,7 +82,6 @@ const GlobalStyle = createGlobalStyle`
 		}
 	}
 
-
 	img {  
 		user-drag: none;  
 		user-select: none;
@@ -101,6 +102,10 @@ const GlobalStyle = createGlobalStyle`
 		cursor: pointer;
 		background-color: rgba(0, 0, 0, 0.6);
 		color: #FFFFFF;
+	}
+
+	.margin {
+		margin-bottom: 2rem;
 	}
 `;
 

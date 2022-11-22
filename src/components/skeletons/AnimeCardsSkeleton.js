@@ -1,11 +1,11 @@
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Scrollbar } from "swiper";
-import Skeleton from "react-loading-skeleton";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Scrollbar } from 'swiper';
+import Skeleton from 'react-loading-skeleton';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
-import "swiper/css";
-import "swiper/css/scrollbar";
+import 'swiper/css';
+import 'swiper/css/scrollbar';
 
 function AnimeCardsSkeleton() {
   const { width } = useWindowDimensions();
@@ -13,7 +13,7 @@ function AnimeCardsSkeleton() {
   return (
     <div
       style={{
-        marginBottom: "1rem",
+        marginBottom: '1rem',
       }}
     >
       <Swiper
@@ -23,23 +23,23 @@ function AnimeCardsSkeleton() {
           hide: true,
         }}
         breakpoints={{
-          "@0.00": {
+          '@0.00': {
             slidesPerView: 3,
             spaceBetween: 15,
           },
-          "@0.75": {
+          '@0.75': {
             slidesPerView: 3,
             spaceBetween: 20,
           },
-          "@1.00": {
+          '@1.00': {
             slidesPerView: 4,
             spaceBetween: 35,
           },
-          "@1.30": {
+          '@1.30': {
             slidesPerView: 5,
             spaceBetween: 35,
           },
-          "@1.50": {
+          '@1.50': {
             slidesPerView: 7,
             spaceBetween: 35,
           },
@@ -51,22 +51,22 @@ function AnimeCardsSkeleton() {
           <SwiperSlide key={i}>
             <Skeleton
               width={
-                width <= 600 ? (width <= 400 ? "100px" : "120px") : "160px"
+                width <= 600 ? (width <= 400 ? '100px' : '120px') : '160px'
               }
               height={
-                width <= 600 ? (width <= 400 ? "160px" : "180px") : "235px"
+                width <= 600 ? (width <= 400 ? '160px' : '180px') : '235px'
               }
-              borderRadius={"0.5rem"}
-              baseColor={"#808080"}
-              highlightColor={"#404040"}
+              borderRadius={'0.5rem'}
+              baseColor={'#808080'}
+              highlightColor={'#404040'}
             />
             <Skeleton
-              width={width <= 600 ? "120px" : "160px"}
-              baseColor={"#808080"}
-              highlightColor={"#404040"}
+              width={width <= 600 ? '120px' : '160px'}
+              baseColor={'#808080'}
+              highlightColor={'#404040'}
               count={2}
               style={{
-                marginTop: "1rem",
+                marginTop: '1rem',
               }}
             />
           </SwiperSlide>
